@@ -11,7 +11,7 @@ if !exists('g:sweep_trail#enable')
 endif
 
 function! sweep_trail#sweep()
-    %substitute/\s\+$//e
+    %substitute/\(\s\|　\)\+$//e
 endfunction
 
 function! sweep_trail#enable()
