@@ -15,19 +15,11 @@ if !exists('g:sweep_trail#option_enable')
 endif
 
 function! sweep_trail#sweep() range
-    if exists('a:firstline')
-        %substitute/\%V\(\s\|　\)\+\%V$//e
-    else
-        %substitute/\(\s\|　\)\+$//e
-    endif
+    execute printf('%s,%ssubstitute/\(\s\|　\)\+$//e', a:firstline, a:lastline)
 endfunction
 
-function! sweep_trail#sweep_optional()
-    if exists('a:firstline')
-        %substitute/\%V\%(\S\+\)\@<=\(\s\|　\)\+\%V$//e
-    else
-        %substitute/\%(\S\+\)\@<=\(\s\|　\)\+$//e
-    endif
+function! sweep_trail#sweep_optional() range
+    execute printf('%s,%ssubstitute/\%(\S\+\)\@<=\(\s\|　\)\+$//e', a:firstline, a:lastline)
 endfunction
 
 function! sweep_trail#enable()
@@ -48,9 +40,9 @@ endfunction
 
 function! sweep_trail#auto_sweep()
     if g:sweep_trail#option_enable
-        call sweep_trail#sweep_optional()
+        %call sweep_trail#sweep_optional()
     elseif g:sweep_trail#enable
-        call sweep_trail#sweep()
+        %call sweep_trail#sweep()
     endif
 endfunction
 

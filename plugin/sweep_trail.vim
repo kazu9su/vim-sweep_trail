@@ -11,7 +11,7 @@ let g:loaded_sweep_trail = 1
 let s:save_cpo = &cpo
 set cpo&vim
 
-command! -bar -range=% SweepTrail call sweep_trail#sweep()
+command! -bar -range=% SweepTrail <line1>,<line2>call sweep_trail#sweep()
 command! -bar SweepTrailEnable call sweep_trail#enable()
 command! -bar SweepTrailUnable call sweep_trail#unable()
 command! -bar SweepTrailOptionEnable call sweep_trail#option_enable()
